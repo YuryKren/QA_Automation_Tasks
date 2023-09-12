@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Online_Shop
 {
+    
     internal class Order
     {
         private string Product;
         private long PhoneNumber;
         private float Price;
         private string DeliveryAddress;
+
         public Order(string name, long phone, float price, string address)
         {
             Product = name;
@@ -19,10 +21,11 @@ namespace Online_Shop
             Price = price;
             DeliveryAddress = address;
         }
+
         public string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, client's phone number {PhoneNumber}, " +
-                   $"price {Price} BYN, delivery address {DeliveryAddress}";
+            return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
+                   $"price: {Price} BYN, delivery address: {DeliveryAddress}";
         }
     }
 }
