@@ -21,7 +21,8 @@ namespace Online_Shop
         }
         public string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, client's phone number {PhoneNumber}, price {Price}, delivery address {DeliveryAddress}";
+            return $"The order for a {Product}, client's phone number {PhoneNumber}, " +
+                   $"price {Price} BYN, delivery address {DeliveryAddress}";
         }
     }
 }
