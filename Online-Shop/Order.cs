@@ -12,19 +12,16 @@ namespace Online_Shop
         private long PhoneNumber;
         private float Price;
         private string DeliveryAddress;
-
-        public Order( string name, long phone, float price, string address )
+        public Order(string name, long phone, float price, string address)
         {
             Product = name;
             PhoneNumber = phone;
             Price = price;
             DeliveryAddress = address;
         }
-
-        public string getInformationFromOrder()
+        public string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, customer phone number {PhoneNumber}, price {Price}, delivery address {DeliveryAddress}";
+            return $"The order for a {Product}, client's phone number {PhoneNumber}, price {Price}, delivery address {DeliveryAddress}";
         }
-
     }
 }
