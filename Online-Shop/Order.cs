@@ -10,8 +10,39 @@ namespace Online_Shop
     internal class Order
     {
         public string Product { get; set; }
-        public long PhoneNumber { get; set; }
-        public float Price {  get; set; }
+
+        private long _phoneNumber;
+        public long PhoneNumber 
+        { 
+            get
+            {
+                return _phoneNumber;
+            }
+            set
+            {
+                string temp = value.ToString();
+                if (temp.Length == 12)
+                {
+                    _phoneNumber = value;
+                }
+            }
+        }
+
+        private float _price;
+        public float Price 
+        {  
+            get
+            { 
+                return _price; 
+            }
+            set 
+            {
+                if (value >= 0 && value < 2000) 
+                {
+                    _price = value;
+                }
+            }
+        }
         public string DeliveryAddress {  get; set; }
 
         public Order(string name, long phone, float price, string address)

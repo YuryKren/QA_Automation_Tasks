@@ -8,11 +8,11 @@
 
 using Online_Shop;
 
-Order[] orders = { new("TV LG B3 OLED", 80175550011, 6129.99f, "Minsk, Kirova str. 14, apt. 25"),
+Order[] orders = { new("TV LG B3 OLED", 375175550011, 6129.99f, "Minsk, Kirova str. 14, apt. 25"),
                    new("soundbar LG SJ3", 80175550011, 770, "Minsk, Kirova str. 14, apt. 25"),
-                   new("refrigerator ATLANT 4626", 80173335544, 1629.55f, "Fanipol, Komsomolskaya str. 7, apt. 43") };
+                   new("refrigerator ATLANT 4626", 375173335544, 1629.55f, "Fanipol, Komsomolskaya str. 7, apt. 43") };
 
-foreach (Order index in orders)
+foreach (Order order in orders)
 {
-    Console.WriteLine(index.GetInformationFromOrder());
+    Console.WriteLine(order.GetInformationFromOrder());
 }
