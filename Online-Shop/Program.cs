@@ -14,5 +14,9 @@ Order[] orders = { new("TV LG B3 OLED", 375175550011, 6129.99f, "Minsk, Kirova s
 
 foreach (Order order in orders)
 {
-    Console.WriteLine(order.GetInformationFromOrder());
+    if (order.PhoneNumber > 0) 
+    {
+        Console.WriteLine(order.GetInformationFromOrder());
+    }
+    
 }
