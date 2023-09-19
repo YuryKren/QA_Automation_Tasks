@@ -9,10 +9,10 @@ namespace Online_Shop
     
     internal class Order
     {
-        private string Product;
-        private long PhoneNumber;
-        private float Price;
-        private string DeliveryAddress;
+        public string Product { get; set; }
+        public long PhoneNumber { get; set; }
+        public float Price {  get; set; }
+        public string DeliveryAddress {  get; set; }
 
         public Order(string name, long phone, float price, string address)
         {
