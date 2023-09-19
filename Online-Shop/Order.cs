@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,49 @@ namespace Online_Shop
     
     internal class Order
     {
-        private string Product;
-        private long PhoneNumber;
-        private float Price;
-        private string DeliveryAddress;
+        public string Product { get; set; }
+
+        private long _phoneNumber;
+        public long PhoneNumber 
+        { 
+            get
+            {
+                return _phoneNumber;
+            }
+            set
+            {
+                string temp = value.ToString();
+                if (temp.Length == 12)
+                {
+                    _phoneNumber = value;
+                }
+                else 
+                {
+                    _phoneNumber = 17512;  // our sales department number
+                }
+            }
+        }
+
+        private float _price;
+        public float Price 
+        {  
+            get
+            { 
+                return _price; 
+            }
+            set 
+            {
+                if (value > 50 && value < 10000) 
+                {
+                    _price = value;
+                }
+                else 
+                {
+                    _price = 50;  // minimum order cost with delivery
+                }
+            }
+        }
+        public string DeliveryAddress {  get; set; }
 
         public Order(string name, long phone, float price, string address)
         {
@@ -26,6 +66,15 @@ namespace Online_Shop
         {
             return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";
+        }
+
+        public bool SearchOrdersByAddress(string address) 
+        {
+            if (DeliveryAddress.Contains(address)) 
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
