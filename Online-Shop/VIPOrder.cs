@@ -16,5 +16,10 @@ namespace Online_Shop
             Present = present;
         }
 
+        public override string GetInformationFromOrder()
+        {
+            base.GetInformationFromOrder();
+            return $"present: {Present}";
+        }
     }
 }
