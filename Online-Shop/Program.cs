@@ -39,6 +39,7 @@ foreach (Order order in orders)
     }
 }
 
+Console.WriteLine("\n\n\t\t\tThe sixth point homework\n");
 foreach (Order order in orders)
 {
     Console.WriteLine(order.GetInformationFromOrder());

@@ -61,7 +61,7 @@ namespace Online_Shop
             DeliveryAddress = address;
         }
 
-        public override string GetInformationFromOrder()
+        public virtual string GetInformationFromOrder()
         {
             return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";

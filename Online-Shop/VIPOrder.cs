@@ -18,8 +18,8 @@ namespace Online_Shop
 
         public override string GetInformationFromOrder()
         {
-            base.GetInformationFromOrder();
-            return $"present: {Present}";
+            return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
+                   $"price: {Price} BYN, delivery address: {DeliveryAddress}, present: {Present}";
         }
     }
 }
