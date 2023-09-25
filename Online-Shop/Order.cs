@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Online_Shop
 {
-    
     internal class Order
     {
         public string Product { get; set; }
@@ -62,7 +61,7 @@ namespace Online_Shop
             DeliveryAddress = address;
         }
 
-        public string GetInformationFromOrder()
+        public virtual string GetInformationFromOrder()
         {
             return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";
