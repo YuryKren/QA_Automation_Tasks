@@ -20,8 +20,8 @@ namespace Online_Shop
             }
             else 
             {
-                Data = Head;
-                Head = data;
+                Head = Data;
+                Data = data;
             }
         }
     }

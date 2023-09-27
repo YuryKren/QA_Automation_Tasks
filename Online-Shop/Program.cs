@@ -36,15 +36,18 @@ foreach (Order order in orders)
         Console.WriteLine(order.GetInformationFromOrder());
     }
 }
-*/
 
 Console.WriteLine("\n\n\t\t\tThe sixth point homework\n");
 foreach (Order order in orders)
 {
     Console.WriteLine(order);
 }
+*/
 
-OrderNode<int>[] digit;
+
+OrderNode<int>[] digit = new OrderNode<int>[3] { new OrderNode<int>(), 
+                                                new OrderNode<int>(), 
+                                                new OrderNode<int>() };
 digit[0].SetHead(1);
 digit[1].SetHead(3);
 digit[2].SetHead(5);
