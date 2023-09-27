@@ -75,5 +75,10 @@ namespace Online_Shop
             }
             return false;
         }
+
+        public override string ToString()
+        {
+            return GetInformationFromOrder();
+        }
     }
 }

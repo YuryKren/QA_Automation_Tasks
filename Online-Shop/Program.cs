@@ -1,9 +1,15 @@
 ﻿/*
-1. Ввести новый типы данных VIPOrder, DiscountOrder и OrdinaryOrder (наследники от Order). 
-1.1 В VIPOrder добавить property с описанием  подарка от службы доставки (string)
-1.2 В DiscountOrder добавить property с размером скидки (float) 
-2. Для всех типов реализовать соответствующие конструкторы
-3. Создать массив из Order различных типов, вывести на экран полную информацию о них
+Task 4
+1. Создать класс для реализации стркутуры данный "односвязный список"(generic)
+	1.1. Создать класс для представления node списка - содержит непосредственно хранимые данные и ссылку на следующий за ним элемент
+	1.2. Создать непосредственно класс MyList, хранящий ссылку на первую node списка (head), и следующие методы:
+		1.2.1 Метод добавления данных в голову списка
+		1.2.2 Метод, возвращающий zero-based позицию элемента в списке (от головного элемента), при его наличии, и -1, если такого элемента нет
+		1.2.3 Метод, возвращающий актуальное число элементов в списке
+		1.2.4 Метод, возвращющий элемент по его позиции (от головного элемента)
+		1.2.5 Метод, удаляющий элемент из списка 
+2. Сохранить объекты типа Order и его наследников с использованием созданного класса односвязного списка, и вывести на экран полную информацию о всех заказах 
+3* Сделать класс MyList перечисляемым (реализовать интерфейс IEnumerable), и выполнить задание 2 с использованием цикла foreach
 */
 
 using Online_Shop;
@@ -19,6 +25,7 @@ Order[] orders = { new("soundbar LG SJ3", 80175550011, 770, "Minsk, Kirova str. 
                    new DiscountOrder("bag for notebook Lenovo", 375297775533, 45.5f, "Gomel, Petra Glebki str. 55, apt. 13", 3),
                    new DiscountOrder("electric scooter Kugoo S3", 375441212120, 880, "Gomel, Lenina str. 25, apt. 17", 3) };
 
+/*
 Console.WriteLine("\n\t\t\tThe fourth point homework\n");
 foreach (Order order in orders)
 {
@@ -29,18 +36,15 @@ foreach (Order order in orders)
         Console.WriteLine(order.GetInformationFromOrder());
     }
 }
-
-Console.WriteLine("\n\n\t\t\tThe fiveth point homework\n");
-foreach (Order order in orders) 
-{
-    if (order.Price >= 300 && order.SearchOrdersByAddress("Gomel")) 
-    {
-        Console.WriteLine(order.GetInformationFromOrder());
-    }
-}
+*/
 
 Console.WriteLine("\n\n\t\t\tThe sixth point homework\n");
 foreach (Order order in orders)
 {
-    Console.WriteLine(order.GetInformationFromOrder());
+    Console.WriteLine(order);
 }
+
+OrderNode<int>[] digit;
+digit[0].SetHead(1);
+digit[1].SetHead(3);
+digit[2].SetHead(5);
