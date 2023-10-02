@@ -9,20 +9,12 @@ namespace Online_Shop
     public class OrderNode<T>
     {
         public T Data { get; set; }
-        public T Head { get; set; }
+        public  OrderNode<T> Next { get; set; }
 
-
-        public void SetHead(T data) 
+        public OrderNode(T data, OrderNode<T> next) 
         {
-            if (Head == null)
-            {
-                Head = data;
-            }
-            else 
-            {
-                Head = Data;
-                Data = data;
-            }
+            Data = data;
+            Next = next;
         }
     }
 }
