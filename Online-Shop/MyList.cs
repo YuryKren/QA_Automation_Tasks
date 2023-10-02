@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 
 namespace Online_Shop
 {
-    internal class ListOrders<T>
+    internal class MyList<T>
     {
         public OrderNode<T> Head { get; set; }
+        public OrderNode<T> Tail { get; set; }
+        int number = -1;
 
         public void AddOrder(T order)
         {
+            var node = new OrderNode<T>(order);
             if (Head == null) 
             {
-                Head = new OrderNode<T>(order, null); 
+                Head = node;
             }
             else
             {
-                Head = new OrderNode<T>(order, Head);
+                Tail.Next = node;
             }
+            Tail = node;
+            number++;
         }
     }
 }

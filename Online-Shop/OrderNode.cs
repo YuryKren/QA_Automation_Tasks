@@ -11,10 +11,9 @@ namespace Online_Shop
         public T Data { get; set; }
         public  OrderNode<T> Next { get; set; }
 
-        public OrderNode(T data, OrderNode<T> next) 
+        public OrderNode(T data) 
         {
             Data = data;
-            Next = next;
         }
     }
 }

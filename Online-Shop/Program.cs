@@ -25,28 +25,10 @@ Order[] orders = { new("soundbar LG SJ3", 80175550011, 770, "Minsk, Kirova str. 
                    new DiscountOrder("bag for notebook Lenovo", 375297775533, 45.5f, "Gomel, Petra Glebki str. 55, apt. 13", 3),
                    new DiscountOrder("electric scooter Kugoo S3", 375441212120, 880, "Gomel, Lenina str. 25, apt. 17", 3) };
 
-/*
-Console.WriteLine("\n\t\t\tThe fourth point homework\n");
-foreach (Order order in orders)
-{
-    long firstDigitNumber = order.PhoneNumber;
-    firstDigitNumber /= 1000000000;
-    if (firstDigitNumber == 375) 
-    {
-        Console.WriteLine(order.GetInformationFromOrder());
-    }
-}
 
-Console.WriteLine("\n\n\t\t\tThe sixth point homework\n");
-foreach (Order order in orders)
-{
-    Console.WriteLine(order);
-}
-*/
-
-ListOrders<Order> list = new ListOrders<Order>();
+MyList<Order> list = new ();
 list.AddOrder(orders[0]);
-list.AddOrder(orders[1]);
-list.AddOrder(orders[2]);
+list.AddOrder(orders[3]);
+list.AddOrder(orders[6]);
 
 Console.WriteLine(list);
