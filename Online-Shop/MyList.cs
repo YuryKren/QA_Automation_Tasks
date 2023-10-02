@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,86 @@ namespace Online_Shop
 {
     internal class MyList<T>
     {
-        public OrderNode<T> Head { get; set; }
-        public OrderNode<T> Tail { get; set; }
-        int number = -1;
+        public Node<T> Head { get; set; }
+        int number;
 
-        public void AddOrder(T order)
+        public void AddElement(T order)
         {
-            var node = new OrderNode<T>(order);
             if (Head == null) 
             {
-                Head = node;
+                Head = new Node<T>(order, null);
             }
             else
             {
-                Tail.Next = node;
+                Head = new Node<T>(order, Head);
             }
-            Tail = node;
             number++;
         }
+
+        public int NumberAvailableElement(T order) 
+        {
+            Node<T> current = Head;
+            int count = -1;
+
+            while (current != null) 
+            {
+                count++;
+                if (current.Data.Equals(order)) 
+                {
+                    return count;
+                }
+                current = current.Next;
+            }
+            return -1;
+        }
+
+        public int ActualNumberElementsList() 
+        {
+            return number;
+        }
+
+        public T GetElementByNumber( int count) 
+        {
+            Node<T> current = Head;
+
+            if (count > number) 
+            {
+                return default(T);
+            }
+            while (count > 0) 
+            {
+                current = current.Next;
+                count--;
+            }
+            return current.Data;
+        }
+
+        public bool Remove(T data)
+        {
+            Node<T> current = Head;
+            Node<T> previous = null;
+
+            while (current != null)
+            {
+                if (current.Data.Equals(data))
+                {
+                    if (previous != null)
+                    {
+                        previous.Next = current.Next;
+                    }
+                    else
+                    {
+                        Head = Head.Next;
+                    }
+                    number--;
+                    return true;
+                }
+
+                previous = current;
+                current = current.Next;
+            }
+            return false;
+        }
+
     }
 }

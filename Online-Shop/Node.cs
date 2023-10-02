@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Online_Shop
 {
-    public class OrderNode<T>
+    public class Node<T>
     {
         public T Data { get; set; }
-        public  OrderNode<T> Next { get; set; }
+        public  Node<T> Next { get; set; }
 
-        public OrderNode(T data) 
+        public Node(T data, Node<T> next) 
         {
             Data = data;
+            Next = next;
         }
     }
 }

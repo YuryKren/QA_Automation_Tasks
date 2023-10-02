@@ -27,8 +27,28 @@ Order[] orders = { new("soundbar LG SJ3", 80175550011, 770, "Minsk, Kirova str. 
 
 
 MyList<Order> list = new ();
-list.AddOrder(orders[0]);
-list.AddOrder(orders[3]);
-list.AddOrder(orders[6]);
+list.AddElement(orders[0]);
+list.AddElement(orders[1]);
+list.AddElement(orders[3]);
+list.AddElement(orders[4]);
+list.AddElement(orders[6]);
 
-Console.WriteLine(list);
+Order numAvailableOrder = orders[3];
+Console.WriteLine($"Order number for {numAvailableOrder.Product} in list - {list.NumberAvailableElement(numAvailableOrder)}");
+
+Console.WriteLine($"Actual number of elements in the list - {list.ActualNumberElementsList()}");
+
+int numByList = 3;
+Console.WriteLine($"The number {numByList} in the list is {list.GetElementByNumber(numByList).Product}");
+
+list.Remove(numAvailableOrder);
+Console.WriteLine($"Order number for {numAvailableOrder.Product} in list - {list.NumberAvailableElement(numAvailableOrder)}");
+
+Console.WriteLine($"Actual number of elements in the list - {list.ActualNumberElementsList()}");
+
+int orderFromList = 0;
+while (orderFromList < list.ActualNumberElementsList())
+{
+    Console.WriteLine(list.GetElementByNumber(orderFromList).ToString());
+    orderFromList++;
+}
