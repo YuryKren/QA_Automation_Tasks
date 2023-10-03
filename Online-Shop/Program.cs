@@ -14,6 +14,7 @@ Task 4
 
 using Online_Shop;
 using System;
+using System.Collections.Generic;
 
 Order[] orders = { new("soundbar LG SJ3", 80175550011, 770, "Minsk, Kirova str. 14, apt. 25"),
                    new("refrigerator ATLANT 4626", 375173335544, 1629.55f, "Fanipol, Komsomolskaya str. 7, apt. 43"),
@@ -51,4 +52,9 @@ while (orderFromList < list.ActualNumberElementsList())
 {
     Console.WriteLine(list.GetElementByNumber(orderFromList).ToString());
     orderFromList++;
+}
+
+foreach (var item in list)
+{
+    Console.WriteLine(item.ToString());
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Online_Shop
 {
-    internal class MyList<T>
+    internal class MyList<T> : IEnumerable<T>
     {
         public Node<T> Head { get; set; }
         int number;
@@ -90,5 +90,19 @@ namespace Online_Shop
             return false;
         }
 
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            Node<T>? current = Head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)this).GetEnumerator();
+        }
     }
 }
