@@ -1,19 +1,12 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Online_Shop
+﻿namespace Online_Shop.Core
 {
     internal class Order
     {
         public string Product { get; set; }
 
         private long _phoneNumber;
-        public long PhoneNumber 
-        { 
+        public long PhoneNumber
+        {
             get
             {
                 return _phoneNumber;
@@ -25,7 +18,7 @@ namespace Online_Shop
                 {
                     _phoneNumber = value;
                 }
-                else 
+                else
                 {
                     _phoneNumber = 17512;  // our sales department number
                 }
@@ -33,25 +26,25 @@ namespace Online_Shop
         }
 
         private float _price;
-        public float Price 
-        {  
+        public float Price
+        {
             get
-            { 
-                return _price; 
-            }
-            set 
             {
-                if (value > 50 && value < 10000) 
+                return _price;
+            }
+            set
+            {
+                if (value > 50 && value < 10000)
                 {
                     _price = value;
                 }
-                else 
+                else
                 {
                     _price = 50;  // minimum order cost with delivery
                 }
             }
         }
-        public string DeliveryAddress {  get; set; }
+        public string DeliveryAddress { get; set; }
 
         public Order(string name, long phone, float price, string address)
         {
@@ -67,9 +60,9 @@ namespace Online_Shop
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";
         }
 
-        public bool SearchOrdersByAddress(string address) 
+        public bool SearchOrdersByAddress(string address)
         {
-            if (DeliveryAddress.Contains(address)) 
+            if (DeliveryAddress.Contains(address))
             {
                 return true;
             }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
-namespace Online_Shop
+namespace Online_Shop.Collections
 {
     internal class MyList<T> : IEnumerable<T>
     {
@@ -14,7 +9,7 @@ namespace Online_Shop
 
         public void AddElement(T order)
         {
-            if (Head == null) 
+            if (Head == null)
             {
                 Head = new Node<T>(order, null);
             }
@@ -25,15 +20,15 @@ namespace Online_Shop
             number++;
         }
 
-        public int NumberAvailableElement(T order) 
+        public int NumberAvailableElement(T order)
         {
             Node<T> current = Head;
             int count = -1;
 
-            while (current != null) 
+            while (current != null)
             {
                 count++;
-                if (current.Data.Equals(order)) 
+                if (current.Data.Equals(order))
                 {
                     return count;
                 }
@@ -42,20 +37,20 @@ namespace Online_Shop
             return -1;
         }
 
-        public int ActualNumberElementsList() 
+        public int ActualNumberElementsList()
         {
             return number;
         }
 
-        public T GetElementByNumber( int count) 
+        public T GetElementByNumber(int count)
         {
             Node<T> current = Head;
 
-            if (count > number) 
+            if (count > number)
             {
-                return default(T);
+                return default;
             }
-            while (count > 0) 
+            while (count > 0)
             {
                 current = current.Next;
                 count--;
