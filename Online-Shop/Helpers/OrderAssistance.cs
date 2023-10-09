@@ -16,7 +16,7 @@ namespace Online_Shop.Helpers
             return filtered;
         }
 
-        public static List<string> GetStringData(List<Order> list, Func<Order, string> selector) 
+        public static List<string> GetStringDataFromList(List<Order> list, Func<Order, string> selector) 
         {
             List<string> selected = new();
             foreach (var item in list) 
