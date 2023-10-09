@@ -1,6 +1,6 @@
 ﻿namespace Online_Shop.Core
 {
-    internal class Order
+    internal class Order : IComparable<Order>
     {
         public string Product { get; set; }
 
@@ -20,7 +20,7 @@
                 }
                 else
                 {
-                    _phoneNumber = 17512;  // our sales department number
+                    _phoneNumber = 33344;  // our sales department number
                 }
             }
         }
@@ -56,7 +56,7 @@
 
         public virtual string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
+            return $"{Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";
         }
 
@@ -72,6 +72,20 @@
         public override string ToString()
         {
             return GetInformationFromOrder();
+        }
+
+// 2. Реализовать в классе Order интерфейс IComparable для сортироваке по умолчанию (по телефону заказчика)
+        public int CompareTo(Order? other)
+        {
+            if (PhoneNumber < other.PhoneNumber) 
+            {
+                return -1;
+            }
+            else if (PhoneNumber > other.PhoneNumber) 
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }

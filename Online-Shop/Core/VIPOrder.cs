@@ -11,7 +11,7 @@
 
         public override string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
+            return $"{Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}, present: {Present}";
         }
     }
