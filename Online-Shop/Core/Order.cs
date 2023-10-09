@@ -1,19 +1,12 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Online_Shop
+﻿namespace Online_Shop.Core
 {
-    internal class Order
+    internal class Order : IComparable<Order>
     {
         public string Product { get; set; }
 
         private long _phoneNumber;
-        public long PhoneNumber 
-        { 
+        public long PhoneNumber
+        {
             get
             {
                 return _phoneNumber;
@@ -25,33 +18,33 @@ namespace Online_Shop
                 {
                     _phoneNumber = value;
                 }
-                else 
+                else
                 {
-                    _phoneNumber = 17512;  // our sales department number
+                    _phoneNumber = 33344;  // our sales department number
                 }
             }
         }
 
         private float _price;
-        public float Price 
-        {  
+        public float Price
+        {
             get
-            { 
-                return _price; 
-            }
-            set 
             {
-                if (value > 50 && value < 10000) 
+                return _price;
+            }
+            set
+            {
+                if (value > 50 && value < 10000)
                 {
                     _price = value;
                 }
-                else 
+                else
                 {
                     _price = 50;  // minimum order cost with delivery
                 }
             }
         }
-        public string DeliveryAddress {  get; set; }
+        public string DeliveryAddress { get; set; }
 
         public Order(string name, long phone, float price, string address)
         {
@@ -63,13 +56,13 @@ namespace Online_Shop
 
         public virtual string GetInformationFromOrder()
         {
-            return $"The order for a {Product}, client's phone number: {PhoneNumber}, " +
+            return $"{Product}, client's phone number: {PhoneNumber}, " +
                    $"price: {Price} BYN, delivery address: {DeliveryAddress}";
         }
 
-        public bool SearchOrdersByAddress(string address) 
+        public bool SearchOrdersByAddress(string address)
         {
-            if (DeliveryAddress.Contains(address)) 
+            if (DeliveryAddress.Contains(address))
             {
                 return true;
             }
@@ -79,6 +72,20 @@ namespace Online_Shop
         public override string ToString()
         {
             return GetInformationFromOrder();
+        }
+
+// 2. Реализовать в классе Order интерфейс IComparable для сортироваке по умолчанию (по телефону заказчика)
+        public int CompareTo(Order? other)
+        {
+            if (PhoneNumber < other.PhoneNumber) 
+            {
+                return -1;
+            }
+            else if (PhoneNumber > other.PhoneNumber) 
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }
