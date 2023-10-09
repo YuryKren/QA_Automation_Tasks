@@ -74,7 +74,6 @@
             return GetInformationFromOrder();
         }
 
-// 2. Реализовать в классе Order интерфейс IComparable для сортироваке по умолчанию (по телефону заказчика)
         public int CompareTo(Order? other)
         {
             if (PhoneNumber < other.PhoneNumber) 
