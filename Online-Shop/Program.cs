@@ -24,7 +24,9 @@ IComparer<Order> comparer = new DeliveryAddressComparer();
 orders.Sort(comparer);
 
 // 4. Провести сортировку списка по критериям из п.3 с использованием LINQ (метод OrderBy)
-var filteringListLessThanPrice = ListFiltering.GetFilteredList(orders, delegate (Order order) {return order.Price < 500;});
+var filteringListLessThanPrice = OrderAssistance.GetFilteredList(orders, x => x.Price < 500);
+var selectedFieldFromList = OrderAssistance.GetStringData(orders, x => x.Price.ToString());
 
+filteringListLessThanPrice = orders.Where(x => x.Price < 500).ToList();
 
 Console.WriteLine(filteringListLessThanPrice.Count);
