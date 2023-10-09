@@ -3,12 +3,13 @@ namespace Online_Shop.Helpers
 {
     internal class ListFiltering
     {
-        public static List<Order> GetFilteredListAtPrice(List<Order> list, float price) 
+        public delegate bool FilteringCondition(Order order);
+        public static List<Order> GetFilteredList(List<Order> list, FilteringCondition predicate) 
         {
             List<Order> filtered = new();
             foreach (var item in list) 
             {
-                if (item.Price < price) 
+                if (predicate(item)) 
                 {
                     filtered.Add(item);
                 }
