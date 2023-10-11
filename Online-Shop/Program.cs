@@ -9,7 +9,7 @@ using Online_Shop.Comparers;
 using Online_Shop.Core;
 using Online_Shop.Helpers;
 
-OnlineStore bigi = new ();
+OnlineStore bigi = new OnlineStore("BiGi");
 bigi.AddOrder(new("Soundbar LG SJ3", 375175550011, 770, "Minsk, Kirova str. 14, apt. 25"));
 bigi.AddOrder(new("Refrigerator ATLANT 4626", 8017173335544, 1629.55f, "Fanipol, Komsomolskaya str. 7, apt. 43"));
 bigi.AddOrder(new("Bag for notebook Lenovo", 375297775533, 45.5f, "Gomel, Petra Glebki str. 55, apt. 13"));
