@@ -1,22 +1,14 @@
 ﻿using Online_Shop.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// 1. Добавить в программу интерфейс IDelivery с методами DeliverOrder(Order) и ExpectedDeliveryTime(Order)
+// (метод должен возвращать примерное время доставки в зависимости отособенностей заказа)
 
 namespace Online_Shop.Interfaces
 {
     internal interface IDelivery
     {
-        void DeliverOrder(Order order) 
-        {
+        Order DeliveryOrder(string orderProduct);
 
-        }
+        DateTime ExpectedDeliveryTime(Order order);
 
-        void ExpectedDeliveryTime(Order order) 
-        {
-
-        }
     }
 }
