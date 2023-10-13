@@ -34,6 +34,7 @@ namespace Online_Shop.Core.DeliveryMethod
                 return true;
             }
             return false;
+            // сбрасывается доставка при возврате 
         }
 
         public int ExpectedDeliveryTime(Order order)
@@ -57,8 +58,13 @@ namespace Online_Shop.Core.DeliveryMethod
                 Free = true;
                 return true;
             }
-            Console.WriteLine($"{DriverName} busy, delivery {deliveringOrder?.Product}");
+            Console.WriteLine(ToString());
             return false;
+        }
+
+        public override string ToString()
+        {
+            return $"Cardriver {DriverName} busy until {EndDelivery}, delivery {deliveringOrder?.Product}";
         }
     }
 }

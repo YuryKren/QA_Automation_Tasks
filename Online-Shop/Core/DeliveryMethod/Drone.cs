@@ -44,8 +44,13 @@ namespace Online_Shop.Core.DeliveryMethod
                 Free = true;
                 return true;
             }
-            Console.WriteLine($"{InvNumber} busy, delivery {deliveringOrder?.Product}");
+            Console.WriteLine(ToString());
             return false;
+        }
+
+        public override string ToString()
+        {
+            return $"Drone Inv. # {InvNumber} busy until {EndDelivery}, delivery {deliveringOrder?.Product}";
         }
     }
 }

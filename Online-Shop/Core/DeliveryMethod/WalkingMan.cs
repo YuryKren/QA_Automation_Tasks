@@ -56,8 +56,13 @@ namespace Online_Shop.Core.DeliveryMethod
                 Free = true;
                 return true;
             }
-            Console.WriteLine($"{EmployeeName} busy, delivery {deliveringOrder?.Product}");
+            Console.WriteLine(ToString());
             return false;
+        }
+
+        public override string ToString()
+        {
+            return $"Person {EmployeeName} busy until {EndDelivery}, delivery {deliveringOrder?.Product}";
         }
     }
 }
