@@ -1,30 +1,63 @@
 ﻿using Online_Shop.Interfaces;
 namespace Online_Shop.Core.DeliveryMethod
+// 2. Реализовать интерфейс IDelivery  нескольких сущностях - пеший доставщик, мотодоставщик, автодоставщик, дрон-доставщик. 
 {
     internal class WalkingMan : IDelivery
     {
-        List<Order> _orders;
+        public string EmployeeName { get; }
+        public string PossibleOrderWeight = "Small, Middle";
+        private bool Free = true;
+        private DateTime EndDelivery;
+        public Order? deliveringOrder;
 
-        public WalkingMan(List<Order> orders) 
+        public WalkingMan(string name) 
         {
-            _orders = orders;
+            EmployeeName = name;
         }
 
-        public Order DeliveryOrder(string orderProduct)
+        public bool DeliveryOrder(Order order)
         {
-            Order resultProduct = _orders.Where(x => x.Product == orderProduct).FirstOrDefault();
-
-            if (resultProduct != null)
+            if (PossibleOrderWeight.Contains(order.DiffOfDelifery) && Free == true)
             {
-                _orders.Remove(resultProduct);
-                return resultProduct;
+                EndDelivery = DateTime.Now;
+                if (order.DiffOfDelifery == "Small")
+                {
+                    EndDelivery = EndDelivery.AddMinutes(30);
+                }
+                else
+                {
+                    EndDelivery = EndDelivery.AddMinutes(35);
+                }
+                Free = false;
+                deliveringOrder = order;
+                return true;
             }
-            return null;
+            return false;
         }
 
-        public DateTime ExpectedDeliveryTime(Order order)
+        public int ExpectedDeliveryTime(Order order)
         {
-            throw new NotImplementedException();
+            if (order.DiffOfDelifery == "Small")
+            {
+                return 30;
+            }
+            else if (order.DiffOfDelifery == "Middle")
+            {
+                return 35;
+            }
+            return int.MaxValue;
+        }
+
+        public bool AreYouFree()
+        {
+            if (EndDelivery < DateTime.Now)
+            {
+                deliveringOrder = null;
+                Free = true;
+                return true;
+            }
+            Console.WriteLine($"{EmployeeName} busy, delivery {deliveringOrder?.Product}");
+            return false;
         }
     }
 }

@@ -3,28 +3,62 @@ namespace Online_Shop.Core.DeliveryMethod
 {
     internal class MotorcycleDelivery : IDelivery
     {
-        List<Order> _orders;
+        public string NumberMoto { get; }
+        public string DriverName { get; }
+        public string PossibleOrderWeight = "Middle, Heavy";
+        private bool Free = true;
+        private DateTime EndDelivery;
+        public Order? deliveringOrder;
 
-        public MotorcycleDelivery(List<Order> orders)
+        public MotorcycleDelivery(string numberMoto, string driverName)
         {
-            _orders = orders;
+            NumberMoto = numberMoto;
+            DriverName = driverName;
         }
 
-        public Order DeliveryOrder(string orderProduct)
+        public bool DeliveryOrder(Order order)
         {
-            Order resultProduct = _orders.Where(x => x.Product == orderProduct).FirstOrDefault();
-
-            if (resultProduct != null)
+            if (PossibleOrderWeight.Contains(order.DiffOfDelifery) && Free == true)
             {
-                _orders.Remove(resultProduct);
-                return resultProduct;
+                EndDelivery = DateTime.Now;
+                if (order.DiffOfDelifery == "Middle")
+                {
+                    EndDelivery = EndDelivery.AddMinutes(30);
+                }
+                else
+                {
+                    EndDelivery = EndDelivery.AddMinutes(60);
+                }
+                Free = false;
+                deliveringOrder = order;
+                return true;
             }
-            return null;
+            return false;
         }
 
-        public DateTime ExpectedDeliveryTime(Order order)
+        public int ExpectedDeliveryTime(Order order)
         {
-            throw new NotImplementedException();
+            if (order.DiffOfDelifery == "Middle")
+            {
+                return 30;
+            }
+            else if (order.DiffOfDelifery == "Heavy")
+            {
+                return 60;
+            }
+            return int.MaxValue;
+        }
+
+        public bool AreYouFree()
+        {
+            if (EndDelivery < DateTime.Now)
+            {
+                deliveringOrder = null;
+                Free = true;
+                return true;
+            }
+            Console.WriteLine($"{DriverName} busy, delivery {deliveringOrder?.Product}");
+            return false;
         }
     }
 }

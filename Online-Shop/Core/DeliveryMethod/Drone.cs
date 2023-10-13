@@ -3,28 +3,49 @@ namespace Online_Shop.Core.DeliveryMethod
 {
     internal class Drone : IDelivery
     {
-        List<Order> _orders;
+        public int InvNumber { get; }
+        private string PossibleOrderWeight = "Small";
+        private bool Free = true;
+        private DateTime EndDelivery;
+        public Order? deliveringOrder;
 
-        public Drone(List<Order> orders)
+        public Drone(int invNumber)
         {
-            _orders = orders;
+            InvNumber = invNumber;
         }
 
-        public Order DeliveryOrder(string orderProduct)
+        public bool DeliveryOrder(Order order)
         {
-            Order resultProduct = _orders.Where(x => x.Product == orderProduct).FirstOrDefault();
-
-            if (resultProduct != null)
+            if (PossibleOrderWeight.Contains(order.DiffOfDelifery) && Free == true)
             {
-                _orders.Remove(resultProduct);
-                return resultProduct;
+                EndDelivery = DateTime.Now;
+                EndDelivery = EndDelivery.AddMinutes(20);
+                Free = false;
+                deliveringOrder = order;
+                return true;
             }
-            return null;
+            return false;
         }
 
-        public DateTime ExpectedDeliveryTime(Order order)
+        public int ExpectedDeliveryTime(Order order)
         {
-            throw new NotImplementedException();
+            if (order.DiffOfDelifery == "Small") 
+            {
+                return 20;
+            }
+            return int.MaxValue;
+        }
+
+        public bool AreYouFree()
+        {
+            if (EndDelivery < DateTime.Now) 
+            {
+                deliveringOrder = null;
+                Free = true;
+                return true;
+            }
+            Console.WriteLine($"{InvNumber} busy, delivery {deliveringOrder?.Product}");
+            return false;
         }
     }
 }
