@@ -43,8 +43,38 @@ namespace Online_Shop.Core
                     break;
                 }
             }
-            DeliverMethod(result).DeliveryOrder(result);
-            
+            var currentDeliveryMethod = DeliverMethod(result);
+            if (currentDeliveryMethod.DeliveryOrder(result)) 
+            {
+                _toDelivery.Remove(result);
+            }
+            else 
+            {
+                if (result.DiffOfDelifery == "Small")
+                {
+                    _deliveries.Add(new Drone(3355));
+                    DeliverMethod(result).DeliveryOrder(result);
+                    _toDelivery.Remove(result);
+                }
+                else if (result.DiffOfDelifery == "Middle") 
+                {
+                    _deliveries.Add(new WalkingMan("Maksim"));
+                    DeliverMethod(result).DeliveryOrder(result);
+                    _toDelivery.Remove(result);
+                }
+                else if (result.DiffOfDelifery == "Heavy")
+                {
+                    _deliveries.Add(new MotorcycleDelivery("8422 MK-6", "Ivan"));
+                    DeliverMethod(result).DeliveryOrder(result);
+                    _toDelivery.Remove(result);
+                }
+                else if (result.DiffOfDelifery == "Very heavy") 
+                {
+                    _deliveries.Add(new CarDelivery("5430 TP-7", "Dmitry"));
+                    DeliverMethod(result).DeliveryOrder(result);
+                    _toDelivery.Remove(result);
+                }
+            }
         }
 
     }
