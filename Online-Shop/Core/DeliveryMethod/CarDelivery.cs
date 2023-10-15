@@ -34,7 +34,6 @@ namespace Online_Shop.Core.DeliveryMethod
                 return true;
             }
             return false;
-            // сбрасывается доставка при возврате 
         }
 
         public int ExpectedDeliveryTime(Order order)

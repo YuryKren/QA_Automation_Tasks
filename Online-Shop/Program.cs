@@ -1,6 +1,10 @@
 ﻿using Online_Shop.Comparers;
 using Online_Shop.Core;
 using Online_Shop.Helpers;
+/*Task 7
+1. Для всех свойств в классах заказа ввести проверку валидности значений в set части, в случае невалидности введенного значения выбрасывать исключения 
+2. Написать юнит тесты для всех сущностей, включая DeliveryService
+*/
 
 DeliveryService bigi = new DeliveryService("BiGi");
 bigi.AddOrder(new("Soundbar LG SJ3", 375175550011, 770, "Minsk, Kirova str. 14, apt. 25", 12));
@@ -13,7 +17,7 @@ bigi.AddOrder(new DiscountOrder("Microwave Samsung 3000", 80174448822, 355, "Gom
 bigi.AddOrder(new DiscountOrder("Washing machine Indesit 520T", 375296660011, 820, "Gomel, Lenina str. 25, apt. 17", 30, 3));
 bigi.AddOrder(new DiscountOrder("Electric scooter Kugoo S3", 375296660011, 880, "Gomel, Lenina str. 25, apt. 17", 25, 3));
 
-// 5. Создать и доставить несколько заказов с исполозванием DeliveryService
+
 bigi.AcceptingOrder("Laptop");
 bigi.AcceptingOrder("Microwave");
 bigi.AcceptingOrder("TV");

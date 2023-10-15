@@ -2,7 +2,6 @@
 using Online_Shop.Interfaces;
 
 namespace Online_Shop.Core
-// 3. Добавить в программу  сущность DeliveryService (служба доставки, включает в себя список актуальных заказов и список доставщиков)
 {
     internal class DeliveryService
     {
@@ -18,8 +17,6 @@ namespace Online_Shop.Core
             _deliveries.Add(new MotorcycleDelivery("8411 MK-6", "Sergey"));
             _deliveries.Add(new CarDelivery("5420 TP-7", "Eugen"));
         }
-        // 4. Релизовать в DeliveryService методы по добавлению и доставке заказов (при доставке у всех доставщиков из списка
-        // запрашивается время доставки, и выбирается доставщик, предложивший лучший вариант)
         public void AddOrder(Order order)
         {
             _goods.Add(order);
