@@ -11,7 +11,7 @@
             set { _price = value * (100 - Discount) / 100; }
         }
 
-        public DiscountOrder(string name, long phone, float price, string address, float discount) : base(name, phone, price, address)
+        public DiscountOrder(string name, long phone, float price, string address, int weight, float discount) : base(name, phone, price, address, weight)
         {
             Discount = discount;
             Price = price;
@@ -20,7 +20,7 @@
         public override string GetInformationFromOrder()
         {
             return $"{Product}, client's phone number: {PhoneNumber}, " +
-                   $"price: {Price} BYN, delivery address: {DeliveryAddress}, discount {Discount}";
+                   $"price: {Price} BYN, delivery address: {DeliveryAddress}, difficulty of delivery: {DiffOfDelifery}, discount {Discount}";
         }
     }
 }
