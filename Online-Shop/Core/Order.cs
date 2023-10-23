@@ -1,7 +1,7 @@
 ﻿namespace Online_Shop.Core
 // 1. Для всех свойств в классах заказа ввести проверку валидности значений в set части, в случае невалидности введенного значения выбрасывать исключения
 {
-    internal class Order : IComparable<Order>
+    public class Order : IComparable<Order>
     {
         private string _product;
         public string Product 

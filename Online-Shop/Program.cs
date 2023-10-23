@@ -17,7 +17,7 @@ try
     bigi.AddOrder(new VIPOrder("TV LG B3 OLED", 375175550011, 6129.99f, "Minsk, Kirova str. 14, apt. 25", 8, "subscription VOKA TV 1 year"));
     bigi.AddOrder(new DiscountOrder("Microwave Samsung 3000", 80174448822, 355, "Gomel, Komsomslskaya str. 16, apt. 48", 7, 5));
     bigi.AddOrder(new DiscountOrder("Washing machine Indesit 520T", 375296660011, 820, "Gomel, Lenina str. 25, apt. 17", 30, 3));
-    bigi.AddOrder(new DiscountOrder("Electric scooter Kugoo S3", 375296660011, 880, "Gomel, Lenina str. 25, apt. 17", 25, 3));
+    bigi.AddOrder(new DiscountOrder("Electric scooter Kugoo S3", 375296660011, 0, "Gomel, Lenina str. 25, apt. 17", 25, 3));
 }
 catch (Exception ex)
 {

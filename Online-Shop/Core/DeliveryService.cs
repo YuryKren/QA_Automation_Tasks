@@ -3,7 +3,7 @@ using Online_Shop.Interfaces;
 
 namespace Online_Shop.Core
 {
-    internal class DeliveryService
+    public class DeliveryService
     {
         public string Name { get; }
         List<Order> _goods = new List<Order>();
