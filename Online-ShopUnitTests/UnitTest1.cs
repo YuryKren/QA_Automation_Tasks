@@ -3,10 +3,10 @@ using Online_Shop.Core;
 namespace Online_ShopUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class OrderTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void PhoneNumber_countLessThan12andMoreThan12_()
         {
             Order testOrder = new();
         }
