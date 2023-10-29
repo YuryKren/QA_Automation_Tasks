@@ -1,7 +1,7 @@
 ﻿using Online_Shop.Interfaces;
 namespace Online_Shop.Core.DeliveryMethod
 {
-    internal class Drone : IDelivery
+    public class Drone : IDelivery
     {
         public int InvNumber { get; }
         private string PossibleOrderWeight = "Small";

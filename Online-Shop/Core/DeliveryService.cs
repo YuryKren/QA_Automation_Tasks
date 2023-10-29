@@ -7,7 +7,7 @@ namespace Online_Shop.Core
     {
         public string Name { get; }
         List<Order> _goods = new List<Order>();
-        List<Order> _toDelivery = new List<Order>();
+        List<Order> _deliveryQueue = new List<Order>();
         List<IDelivery> _deliveries = new List<IDelivery>();
         public DeliveryService(string name)
         {
@@ -17,14 +17,14 @@ namespace Online_Shop.Core
             _deliveries.Add(new MotorcycleDelivery("8411 MK-6", "Sergey"));
             _deliveries.Add(new CarDelivery("5420 TP-7", "Eugen"));
         }
-        public void AddOrder(Order order)
+        public void AddProduct(Order order)
         {
             _goods.Add(order);
         }
 
-        private IDelivery DeliverMethod(Order item)
+        public IDelivery DeliverMethod(Order item)
         {
-            return _deliveries.Where(x => x.AreYouFree()).OrderBy(x => x.ExpectedDeliveryTime(item)).First();
+            return _deliveries.Where(x => x.AreYouFree()).OrderBy(x => x.ExpectedDeliveryTime(item)).FirstOrDefault();
         }
 
         public void AcceptingOrder(string order) 
@@ -34,44 +34,33 @@ namespace Online_Shop.Core
             {
                 if(item.Product.Contains(order))
                 {
-                    _toDelivery.Add(item);
+                    _deliveryQueue.Add(item);
                     _goods.Remove(item);
                     result = item;
                     break;
                 }
             }
             var currentDeliveryMethod = DeliverMethod(result);
-            if (currentDeliveryMethod.DeliveryOrder(result)) 
+            if (currentDeliveryMethod != null) 
             {
-                _toDelivery.Remove(result);
+                currentDeliveryMethod.DeliveryOrder(result);
+                _deliveryQueue.Remove(result);
             }
             else 
             {
-                if (result.DiffOfDelifery == "Small")
-                {
-                    _deliveries.Add(new Drone(3355));
-                    DeliverMethod(result).DeliveryOrder(result);
-                    _toDelivery.Remove(result);
-                }
-                else if (result.DiffOfDelifery == "Middle") 
-                {
-                    _deliveries.Add(new WalkingMan("Maksim"));
-                    DeliverMethod(result).DeliveryOrder(result);
-                    _toDelivery.Remove(result);
-                }
-                else if (result.DiffOfDelifery == "Heavy")
-                {
-                    _deliveries.Add(new MotorcycleDelivery("8422 MK-6", "Ivan"));
-                    DeliverMethod(result).DeliveryOrder(result);
-                    _toDelivery.Remove(result);
-                }
-                else if (result.DiffOfDelifery == "Very heavy") 
-                {
-                    _deliveries.Add(new CarDelivery("5430 TP-7", "Dmitry"));
-                    DeliverMethod(result).DeliveryOrder(result);
-                    _toDelivery.Remove(result);
-                }
+                Console.WriteLine($"Unfortunately, we cannot deliver the {result.Product} since all the couriers are busy." +
+                                  $" We will deliver it over the next hour");
             }
+        }
+
+        public int UnfulfilledOrders() 
+        {
+            return _deliveryQueue.Count;
+        }
+
+        public int QuantityOfGoods()
+        { 
+            return _goods.Count;
         }
 
     }

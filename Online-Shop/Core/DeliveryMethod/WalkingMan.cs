@@ -2,7 +2,7 @@
 namespace Online_Shop.Core.DeliveryMethod
 // 2. Реализовать интерфейс IDelivery  нескольких сущностях - пеший доставщик, мотодоставщик, автодоставщик, дрон-доставщик. 
 {
-    internal class WalkingMan : IDelivery
+    public class WalkingMan : IDelivery
     {
         public string EmployeeName { get; }
         public string PossibleOrderWeight = "Small, Middle";
@@ -24,7 +24,7 @@ namespace Online_Shop.Core.DeliveryMethod
                 {
                     EndDelivery = EndDelivery.AddMinutes(30);
                 }
-                else
+                else if (order.DiffOfDelifery == "Middle")
                 {
                     EndDelivery = EndDelivery.AddMinutes(35);
                 }

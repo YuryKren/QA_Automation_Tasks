@@ -1,7 +1,7 @@
 ﻿using Online_Shop.Core;
 namespace Online_Shop.Interfaces
 {
-    internal interface IDelivery
+    public interface IDelivery
     {
         bool DeliveryOrder(Order order);
 

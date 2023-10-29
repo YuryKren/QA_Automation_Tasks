@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Online_Shop.Core;
+﻿using Online_Shop.Core;
 using Online_Shop.Core.DeliveryMethod;
 using System.Diagnostics;
 
 namespace Online_ShopUnitTests
 {
     [TestClass]
-    public class CarDeliveryUnitTest
+    public class DeliveryMethodUnitTest
     {
         private static CarDelivery carDelivery;
         private static Order smallOrder;
