@@ -1,8 +1,24 @@
 ﻿namespace Online_Shop.Core
+// 1. Для всех свойств в классах заказа ввести проверку валидности значений в set части, в случае невалидности введенного значения выбрасывать исключения
 {
-    internal class Order : IComparable<Order>
+    public class Order : IComparable<Order>
     {
-        public string Product { get; set; }
+        private string _product;
+        public string Product 
+        {
+            get 
+            {
+                return _product;
+            }
+            set 
+            {
+                if (value.Length == 0) 
+                {
+                    throw new ArgumentException("Wrong product name");
+                }
+                _product = value;
+            }
+        }
 
         private long _phoneNumber;
         public long PhoneNumber
@@ -34,6 +50,10 @@
             }
             set
             {
+                if (value <= 0) 
+                {
+                    throw new ArgumentException("Wrong price");
+                }
                 if (value > 50 && value < 10000)
                 {
                     _price = value;
@@ -44,7 +64,23 @@
                 }
             }
         }
-        public string DeliveryAddress { get; set; }
+
+        private string _deliveryAddress;
+        public string DeliveryAddress
+        {
+            get
+            {
+                return _deliveryAddress;
+            }
+            set
+            {
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("Wrong delivery address");
+                }
+                _deliveryAddress = value;
+            }
+        }
 
         public string DiffOfDelifery { get; set; }
 
@@ -65,6 +101,10 @@
 
         public string DifficultOfDelivery(int weight) 
         {
+            if (weight <= 0) 
+            {
+                throw new ArgumentException("Wrong weight");
+            }
             if (weight < 3) 
             {
                 return "Small";

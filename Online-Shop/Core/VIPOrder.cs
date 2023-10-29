@@ -1,6 +1,6 @@
 ﻿namespace Online_Shop.Core
 {
-    internal class VIPOrder : Order
+    public class VIPOrder : Order
     {
         public string Present { get; set; }
 

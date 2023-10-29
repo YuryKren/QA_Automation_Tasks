@@ -1,7 +1,7 @@
 ﻿using Online_Shop.Interfaces;
 namespace Online_Shop.Core.DeliveryMethod
 {
-    internal class CarDelivery : IDelivery
+    public class CarDelivery : IDelivery
     {
         public string NumberСar {  get; }
         public string DriverName { get; }
@@ -25,7 +25,7 @@ namespace Online_Shop.Core.DeliveryMethod
                 {
                     EndDelivery = EndDelivery.AddMinutes(50);
                 }
-                else
+                else if (order.DiffOfDelifery == "Very heavy")
                 {
                     EndDelivery = EndDelivery.AddMinutes(70);
                 }
@@ -34,7 +34,6 @@ namespace Online_Shop.Core.DeliveryMethod
                 return true;
             }
             return false;
-            // сбрасывается доставка при возврате 
         }
 
         public int ExpectedDeliveryTime(Order order)
@@ -65,6 +64,12 @@ namespace Online_Shop.Core.DeliveryMethod
         public override string ToString()
         {
             return $"Cardriver {DriverName} busy until {EndDelivery}, delivery {deliveringOrder?.Product}";
+        }
+
+        public void FinishTheExecutedDelivery()
+        {
+            EndDelivery = DateTime.Now;
+            Free = true;
         }
     }
 }

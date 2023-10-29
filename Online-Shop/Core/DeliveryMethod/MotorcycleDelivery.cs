@@ -1,7 +1,7 @@
 ﻿using Online_Shop.Interfaces;
 namespace Online_Shop.Core.DeliveryMethod
 {
-    internal class MotorcycleDelivery : IDelivery
+    public class MotorcycleDelivery : IDelivery
     {
         public string NumberMoto { get; }
         public string DriverName { get; }
@@ -25,7 +25,7 @@ namespace Online_Shop.Core.DeliveryMethod
                 {
                     EndDelivery = EndDelivery.AddMinutes(30);
                 }
-                else
+                else if (order.DiffOfDelifery == "Heavy")
                 {
                     EndDelivery = EndDelivery.AddMinutes(60);
                 }
@@ -59,6 +59,12 @@ namespace Online_Shop.Core.DeliveryMethod
             }
             Console.WriteLine(ToString());
             return false;
+        }
+
+        public void FinishTheExecutedDelivery()
+        {
+            EndDelivery = DateTime.Now;
+            Free = true;
         }
 
         public override string ToString()

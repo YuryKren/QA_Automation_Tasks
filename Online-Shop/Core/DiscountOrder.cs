@@ -1,6 +1,6 @@
 ﻿namespace Online_Shop.Core
 {
-    internal class DiscountOrder : Order
+    public class DiscountOrder : Order
     {
         public float Discount { get; set; }
 

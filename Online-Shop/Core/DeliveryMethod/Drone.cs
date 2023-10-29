@@ -1,7 +1,7 @@
 ﻿using Online_Shop.Interfaces;
 namespace Online_Shop.Core.DeliveryMethod
 {
-    internal class Drone : IDelivery
+    public class Drone : IDelivery
     {
         public int InvNumber { get; }
         private string PossibleOrderWeight = "Small";
@@ -46,6 +46,12 @@ namespace Online_Shop.Core.DeliveryMethod
             }
             Console.WriteLine(ToString());
             return false;
+        }
+
+        public void FinishTheExecutedDelivery()
+        {
+            EndDelivery = DateTime.Now;
+            Free = true;
         }
 
         public override string ToString()
