@@ -9,5 +9,7 @@ namespace Online_Shop.Interfaces
 
         int ExpectedDeliveryTime(Order order);
 
+        void FinishTheExecutedDelivery();
+
     }
 }

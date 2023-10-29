@@ -60,6 +60,12 @@ namespace Online_Shop.Core.DeliveryMethod
             return false;
         }
 
+        public void FinishTheExecutedDelivery()
+        {
+            EndDelivery = DateTime.Now;
+            Free = true;
+        }
+
         public override string ToString()
         {
             return $"Person {EmployeeName} busy until {EndDelivery}, delivery {deliveringOrder?.Product}";

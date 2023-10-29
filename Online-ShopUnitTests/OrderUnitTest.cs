@@ -88,6 +88,11 @@ namespace Online_ShopUnitTests
             Assert.IsTrue(testOrder.SearchOrdersByAddress("Minsk"));
         }
 
-
+        [TestMethod]
+        public void CheckingTheCorrectDiscountOrderPrice()
+        {
+            DiscountOrder testOrder = new("testOrder", 375251111111, 100, "Minsk", 15, 1);
+            Assert.AreEqual(99, testOrder.Price);
+        }
     }
 }
